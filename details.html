@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Details - Hotelify Georgia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/details.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/language-switcher.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="header__nav container">
+            <div class="header__logo">
+                <h1><a href="index.html" data-i18n="brand.name">Hotelify Georgia</a></h1>
+            </div>
+            <ul class="header__menu">
+                <li class="header__menu-item"><a href="index.html" class="header__link" data-i18n="nav.home">Home</a></li>
+                <li class="header__menu-item"><a href="hotels.html" class="header__link" data-i18n="nav.hotels">Hotels</a></li>
+                <li class="header__menu-item"><a href="index.html#services" class="header__link" data-i18n="nav.services">Services</a></li>
+                <li class="header__menu-item"><a href="index.html#contact" class="header__link" data-i18n="nav.contact">Contact</a></li>
+                <li class="header__menu-item language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <span class="lang-separator">|</span>
+                    <button class="lang-btn" data-lang="ka">ქარ</button>
+                </li>
+            </ul>
+            <button class="header__menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <div class="breadcrumb">
+            <div class="container">
+                <a href="index.html" class="breadcrumb__link" data-i18n="details.breadcrumb.home">Home</a>
+                <span class="breadcrumb__separator">/</span>
+                <a href="hotels.html" class="breadcrumb__link" data-i18n="details.breadcrumb.hotels">Hotels</a>
+                <span class="breadcrumb__separator">/</span>
+                <span class="breadcrumb__current" id="breadcrumbHotel">Hotel Details</span>
+            </div>
+        </div>
+
+        <section class="hotel-details section" id="hotelDetails">
+            <div class="loading" data-i18n="details.loading">Loading hotel details...</div>
+        </section>
+
+        <div class="error-message" id="errorMessage">
+            <div class="container">
+                <h2 data-i18n="details.notFound">Hotel Not Found</h2>
+                <p data-i18n="details.notFound.desc">Sorry, we couldn't find the hotel you're looking for.</p>
+                <a href="hotels.html" class="btn btn--primary" data-i18n="details.backToHotels">Back to Hotels</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__column">
+                    <h3 class="footer__title" data-i18n="brand.name">Hotelify Georgia</h3>
+                    <p class="footer__text" data-i18n="footer.description">Your trusted partner for unforgettable hotel experiences worldwide.</p>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__heading" data-i18n="footer.quickLinks">Quick Links</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html" class="footer__link" data-i18n="nav.home">Home</a></li>
+                        <li><a href="hotels.html" class="footer__link" data-i18n="nav.hotels">Hotels</a></li>
+                        <li><a href="index.html#services" class="footer__link" data-i18n="nav.services">Services</a></li>
+                        <li><a href="index.html#contact" class="footer__link" data-i18n="nav.contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__heading" data-i18n="footer.contact">Contact Us</h4>
+                    <ul class="footer__contacts">
+                        <li>📧 info@Hotelify Georgia.ge</li>
+                        <li>📞 +995 (555) 123-456</li>
+                        <li>📍 Rustaveli Ave, Tbilisi, Georgia</li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__heading" data-i18n="footer.followUs">Follow Us</h4>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link" aria-label="Facebook">FB</a>
+                        <a href="#" class="footer__social-link" aria-label="Instagram">IG</a>
+                        <a href="#" class="footer__social-link" aria-label="Twitter">TW</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 <span data-i18n="brand.name">Hotelify Georgia</span>. <span data-i18n="footer.rights">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/details.js"></script>
+</body>
+</html>
+

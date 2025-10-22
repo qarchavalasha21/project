@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Hotels - Hotelify Georgia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/hotels.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/language-switcher.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="header__nav container">
+            <div class="header__logo">
+                <h1><a href="index.html" data-i18n="brand.name">Hotelify Georgia</a></h1>
+            </div>
+            <ul class="header__menu">
+                <li class="header__menu-item"><a href="index.html" class="header__link" data-i18n="nav.home">Home</a></li>
+                <li class="header__menu-item"><a href="hotels.html" class="header__link header__link--active" data-i18n="nav.hotels">Hotels</a></li>
+                <li class="header__menu-item"><a href="index.html#services" class="header__link" data-i18n="nav.services">Services</a></li>
+                <li class="header__menu-item"><a href="index.html#contact" class="header__link" data-i18n="nav.contact">Contact</a></li>
+                <li class="header__menu-item language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <span class="lang-separator">|</span>
+                    <button class="lang-btn" data-lang="ka">ქარ</button>
+                </li>
+            </ul>
+            <button class="header__menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hotels-hero">
+            <div class="container">
+                <h1 class="hotels-hero__title" data-i18n="hotels.hero.title">Discover Amazing Hotels</h1>
+                <p class="hotels-hero__subtitle" data-i18n="hotels.hero.subtitle">Find your perfect accommodation from our curated collection</p>
+            </div>
+        </section>
+
+        <section class="hotels-section section">
+            <div class="container">
+                <!-- Search and Filters -->
+                <div class="hotels-controls">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" class="search-bar__input" data-i18n="hotels.search.placeholder" placeholder="Search hotels by name or location...">
+                        <button class="search-bar__button" id="searchButton" data-i18n="hotels.search.button">Search</button>
+                    </div>
+
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="locationFilter" class="filter-label" data-i18n="hotels.filter.location">Location:</label>
+                            <select id="locationFilter" class="filter-select">
+                                <option value="" data-i18n="hotels.filter.allLocations">All Locations</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="priceFilter" class="filter-label" data-i18n="hotels.filter.price">Max Price:</label>
+                            <select id="priceFilter" class="filter-select">
+                                <option value="" data-i18n="hotels.filter.anyPrice">Any Price</option>
+                                <option value="150" data-price="150">Under $150</option>
+                                <option value="250" data-price="250">Under $250</option>
+                                <option value="350" data-price="350">Under $350</option>
+                                <option value="500" data-price="500">Under $500</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="ratingFilter" class="filter-label" data-i18n="hotels.filter.rating">Min Rating:</label>
+                            <select id="ratingFilter" class="filter-select">
+                                <option value="" data-i18n="hotels.filter.anyRating">Any Rating</option>
+                                <option value="4.5">4.5+ <span data-i18n="hotels.filter.stars">Stars</span></option>
+                                <option value="4.0">4.0+ <span data-i18n="hotels.filter.stars">Stars</span></option>
+                                <option value="3.5">3.5+ <span data-i18n="hotels.filter.stars">Stars</span></option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="sortBy" class="filter-label" data-i18n="hotels.sort">Sort By:</label>
+                            <select id="sortBy" class="filter-select">
+                                <option value="rating-desc" data-i18n="hotels.sort.ratingDesc">Rating (High to Low)</option>
+                                <option value="rating-asc" data-i18n="hotels.sort.ratingAsc">Rating (Low to High)</option>
+                                <option value="price-asc" data-i18n="hotels.sort.priceAsc">Price (Low to High)</option>
+                                <option value="price-desc" data-i18n="hotels.sort.priceDesc">Price (High to Low)</option>
+                                <option value="name-asc" data-i18n="hotels.sort.nameAsc">Name (A to Z)</option>
+                            </select>
+                        </div>
+
+                        <button class="filter-reset" id="resetFilters" data-i18n="hotels.reset">Reset All</button>
+                    </div>
+                </div>
+
+                <!-- Results Info -->
+                <div class="results-info">
+                    <p id="resultsCount" data-i18n="hotels.loading">Loading hotels...</p>
+                </div>
+
+                <!-- Hotels Grid -->
+                <div class="hotels-grid" id="hotelsGrid">
+                    <div class="loading" data-i18n="hotels.loading">Searching for the best hotels...</div>
+                </div>
+
+                <!-- No Results Message -->
+                <div class="no-results" id="noResults">
+                    <p data-i18n="hotels.noResults">No hotels found matching your criteria.</p>
+                    <button class="btn btn--secondary" id="clearFiltersBtn" data-i18n="hotels.clearFilters">Clear Filters</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__column">
+                    <h3 class="footer__title" data-i18n="brand.name">Hotelify Georgia</h3>
+                    <p class="footer__text" data-i18n="footer.description">Your trusted partner for unforgettable hotel experiences worldwide.</p>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__heading" data-i18n="footer.quickLinks">Quick Links</h4>
+                    <ul class="footer__links">
+                        <li><a href="index.html" class="footer__link" data-i18n="nav.home">Home</a></li>
+                        <li><a href="hotels.html" class="footer__link" data-i18n="nav.hotels">Hotels</a></li>
+                        <li><a href="index.html#services" class="footer__link" data-i18n="nav.services">Services</a></li>
+                        <li><a href="index.html#contact" class="footer__link" data-i18n="nav.contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__heading" data-i18n="footer.contact">Contact Us</h4>
+                    <ul class="footer__contacts">
+                        <li>📧 info@Hotelify Georgia.ge</li>
+                        <li>📞 +995 (555) 123-456</li>
+                        <li>📍 Rustaveli Ave, Tbilisi, Georgia</li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h4 class="footer__heading" data-i18n="footer.followUs">Follow Us</h4>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link" aria-label="Facebook">FB</a>
+                        <a href="#" class="footer__social-link" aria-label="Instagram">IG</a>
+                        <a href="#" class="footer__social-link" aria-label="Twitter">TW</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 <span data-i18n="brand.name">Hotelify Georgia</span>. <span data-i18n="footer.rights">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/translations.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/hotels.js"></script>
+</body>
+</html>
+
